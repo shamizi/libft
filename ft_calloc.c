@@ -6,7 +6,7 @@
 /*   By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 17:19:47 by shamizi           #+#    #+#             */
-/*   Updated: 2020/11/30 10:34:12 by shamizi          ###   ########.fr       */
+/*   Updated: 2020/12/08 12:31:05 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,10 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	size_t	i;
 	void	*res;
 
-	i = 0;
-	if (nmemb == 0 || size == 0)
-		return (NULL);
-	res = malloc(sizeof((nmemb * size)));
-	while (i <= nmemb)
-	{
-		((char *)res)[i] = 0;
-		i++;
-	}
+	if (!(res = malloc(nmemb * size)))
+		return (0);
+	ft_bzero(res, nmemb * size);
 	return (res);
 }

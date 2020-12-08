@@ -6,13 +6,13 @@
 /*   By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 12:16:45 by shamizi           #+#    #+#             */
-/*   Updated: 2020/11/30 12:54:30 by shamizi          ###   ########.fr       */
+/*   Updated: 2020/12/07 19:00:33 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		sizetab(long nb)
+static int		sizetab(long nb)
 {
 	int	len;
 
