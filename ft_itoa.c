@@ -6,7 +6,7 @@
 /*   By: shamizi <shamizi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 12:16:45 by shamizi           #+#    #+#             */
-/*   Updated: 2020/12/07 19:00:33 by shamizi          ###   ########.fr       */
+/*   Updated: 2020/12/08 13:06:34 by shamizi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,12 @@
 
 static int		sizetab(long nb)
 {
-	int	len;
+	int		len;
 
 	len = 0;
-	if (nb < 0)
-	{
-		nb = nb * -1;
+	if (nb <= 0)
 		len++;
-	}
-	while (nb > 0)
+	while (nb)
 	{
 		nb = nb / 10;
 		len++;
@@ -30,29 +27,37 @@ static int		sizetab(long nb)
 	return (len);
 }
 
-char	*ft_itoa(int n)
+void			write_nb(long nb, int len, char *res)
 {
-	char	*str;
-	int		i;
-	long	nb;
-
-	nb = n;
-	i = sizetab(nb);
-	if (!(str = (char *)malloc(sizeof(char) * (i + 1))))
-		return (NULL);
-	str[i--] = '\0';
 	if (nb == 0)
-		str[0] = '0';
+	{
+		res[0] = '0';
+	}
 	if (nb < 0)
 	{
-		str[0] = '-';
+		res[0] = '-';
 		nb = nb * -1;
 	}
 	while (nb > 0)
 	{
-		str[i] = (nb % 10) + '0';
+		res[len] = (nb % 10) + '0';
 		nb = nb / 10;
-		i--;
+		len--;
 	}
+}
+
+char			*ft_itoa(int n)
+{
+	char	*str;
+	int		len;
+	long	nb;
+
+	nb = n;
+	len = sizetab(nb);
+	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
+		return (0);
+	str[len] = 0;
+	len--;
+	write_nb(nb, len, str);
 	return (str);
 }
